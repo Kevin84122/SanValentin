@@ -1,97 +1,173 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>San Valentín 💘</title>
-  <style>
-    :root { --bg:#0b1020; --card:#121a33; --txt:#eaf0ff; --mut:#aab6ff; }
-    * { box-sizing:border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
-    body { margin:0; min-height:100vh; display:grid; place-items:center; background: radial-gradient(1200px 600px at 50% 30%, #1a2a6c 0%, var(--bg) 60%); color:var(--txt); padding:24px; }
-    .card { width:min(520px, 100%); background: color-mix(in srgb, var(--card) 92%, black); border:1px solid rgba(255,255,255,.08); border-radius:22px; padding:24px; box-shadow: 0 24px 60px rgba(0,0,0,.45); position:relative; overflow:hidden; }
-    h1 { margin:0 0 6px; font-size:28px; }
-    p { margin:0 0 18px; color:var(--mut); line-height:1.4; }
-    .emoji { font-size:54px; margin-bottom:10px; }
-    .area { position:relative; height:170px; border-radius:18px; border:1px dashed rgba(255,255,255,.15); background: rgba(255,255,255,.03); display:flex; align-items:center; justify-content:center; }
-    .btns { margin-top:16px; display:flex; gap:12px; flex-wrap:wrap; }
-    button { border:0; padding:12px 18px; border-radius:14px; font-weight:700; cursor:pointer; font-size:16px; }
-    #yes { background: #36d399; color:#042116; flex:1; }
-    #no  { background: #ff5c7a; color:#2a0010; min-width:120px; position:absolute; }
-    .footer { margin-top:16px; font-size:12px; color:rgba(255,255,255,.55); }
-    .heart { position:absolute; inset:-40px; opacity:.10; filter: blur(.2px); }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Valentín 💘</title>
+
+<style>
+:root {
+  --bg1:#1a2a6c;
+  --bg2:#0b1020;
+  --card:#121a33;
+  --txt:#eaf0ff;
+  --mut:#aab6ff;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle at top,var(--bg1),var(--bg2));
+  color:var(--txt);
+  padding:20px;
+}
+
+.card{
+  width:100%;
+  max-width:520px;
+  background:var(--card);
+  border-radius:22px;
+  padding:24px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  position:relative;
+  overflow:hidden;
+}
+
+.heart{
+  position:absolute;
+  inset:-40px;
+  opacity:.08;
+  font-size:40px;
+  pointer-events:none; /* 🔥 evita que bloquee clicks */
+}
+
+h1{
+  margin:10px 0;
+}
+
+p{
+  color:var(--mut);
+}
+
+.area{
+  position:relative;
+  height:170px;
+  border-radius:18px;
+  border:1px dashed rgba(255,255,255,.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:15px;
+}
+
+button{
+  border:none;
+  padding:12px 20px;
+  border-radius:14px;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+}
+
+#yes{
+  background:#36d399;
+  color:#042116;
+  margin-top:15px;
+  width:100%;
+}
+
+#no{
+  position:absolute;
+  background:#ff5c7a;
+  color:#2a0010;
+}
+
+</style>
 </head>
+
 <body>
-  <div class="card">
-    <div class="heart">💗💗💗💗💗💗💗💗</div>
-    <div class="emoji">💘</div>
-    <h1>¿Quieres ser mi San Valentín?</h1>
-    <p>Prometo comida rica, mimos y muchas risas. 😌✨</p>
 
-    <div class="area" id="area">
-      <button id="no" aria-label="No">No 😭</button>
-      <div style="text-align:center;">
-        <div style="font-size:18px; font-weight:700;">Pícale a “Sí” 👉</div>
-        <div style="font-size:13px; opacity:.7; margin-top:4px;">(el “No” anda medio tímido)</div>
-      </div>
+<div class="card">
+  <div class="heart">💗💗💗💗💗💗💗💗💗</div>
+
+  <h1>Mi Rosin ¿Quieres ser mi San Valentín? 💘</h1>
+  <p>Neta No Te Arrepentiras Mi Rosin</p>
+
+  <div class="area" id="area">
+    <button id="no">No</button>
+    <div>
+      <strong>Pícale a “Sí” 👉</strong><br>
+      <small>(el “No” Anda Medio Raro, Parecido A Cuando Te Dije Que Si Decias Que No Tenias Que Hacer Una Triple Mortal Hacia Atras Xd)</small>
     </div>
-
-    <div class="btns">
-      <button id="yes">Sí 💞</button>
-    </div>
-
-    <div class="footer">Hecho con amor (y tantita maña). 😌</div>
   </div>
 
+  <button id="yes">Sí 💖</button>
+</div>
+
 <script>
-  const noBtn = document.getElementById('no');
-  const yesBtn = document.getElementById('yes');
-  const area = document.getElementById('area');
 
-  function moveNo() {
-    const rect = area.getBoundingClientRect();
-    const btnRect = noBtn.getBoundingClientRect();
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const area = document.getElementById("area");
 
-    const maxX = rect.width - btnRect.width;
-    const maxY = rect.height - btnRect.height;
+function moveNo(){
+  const rect = area.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+  const maxX = rect.width - btnRect.width;
+  const maxY = rect.height - btnRect.height;
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-  }
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
 
-  // Posición inicial
-  noBtn.style.left = "20px";
-  noBtn.style.top = "20px";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
 
-  // PC
-  noBtn.addEventListener("mouseenter", moveNo);
+noBtn.style.left = "20px";
+noBtn.style.top = "20px";
 
-  // Celular
-  noBtn.addEventListener("touchstart", function(e) {
-    e.preventDefault();
-    moveNo();
-  }, { passive: false });
+noBtn.addEventListener("mouseenter", moveNo);
 
-  yesBtn.addEventListener("click", function() {
-    document.body.innerHTML = `
-      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg,#ff4e8b,#1a1a2e);color:white;text-align:center;
-      font-family:system-ui;padding:20px;">
-        <div>
-          <h1 style="font-size:40px;">🥰 ¡SÍIIIII! 💖</h1>
-          <p style="font-size:20px;margin-top:10px;">
-            Sabía que dirías que sí 😌💘
-          </p>
-          <p style="opacity:.7;margin-top:20px;">
-            Ahora mándame screenshot 😏
-          </p>
-        </div>
+noBtn.addEventListener("touchstart", function(e){
+  e.preventDefault();
+  moveNo();
+},{passive:false});
+
+yesBtn.addEventListener("click", function(){
+  document.body.innerHTML = `
+  <div style="
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:linear-gradient(135deg,#ff4e8b,#1a1a2e);
+    color:white;
+    font-family:system-ui;
+    padding:20px;">
+      <div>
+        <h1 style="font-size:40px;">🥰 ¡SÍIIIII! 💖</h1>
+        <p style="font-size:20px;margin-top:10px;">
+          Sabía que dirías que sí es imposible resistirse a mi jaja 😌💘
+        </p>
+        <p style="opacity:.7;margin-top:20px;">
+          Ahora mándame screenshot 😏
+        </p>
       </div>
-    `;
-  });
+  </div>`;
+});
+
 </script>
+
 </body>
 </html>
